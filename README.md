@@ -1,17 +1,21 @@
-Nestable
+Nestable++
 ========
 
-## PLEASE NOTE
+Drag and drop menu editor jQuery plugin, forked from [dbushell/nestable](https://github.com/dbushell/Nestable).
 
-**I cannot provide any support or guidance beyond this README. If this code helps you that's great but I have no plans to develop Nestable beyond this demo (it's not a final product and has limited functionality). I cannot reply to any requests for help.**
+Additions:
+- Add/Delete/Edit menu items
+- Slug attribute
 
-* * *
+![Nestable++ plugin](https://raw.githubusercontent.com/ShinDarth/Nestable/master/screenshot.png "Nestable++ plugin")
 
-### Drag & drop hierarchical list with mouse and touch compatibility (jQuery / Zepto plugin)
+## Nestable++ notes
 
-[**Try Nestable Demo**](http://dbushell.github.com/Nestable/)
+Suppose that all the initial items are already **stored** in your database (or somewhere else):
 
-Nestable is an experimental example and not under active development. If it suits your requirements feel free to expand upon it!
+- On deletion, all stored elements will have **data-deleted** property set to 1
+- On deletion, all non-stored elements will be just removed from DOM and from JSON (like they never existed)
+- On addition, all new elements will have **data-new** property set to 1 and a value like *new-** as **data-id**
 
 ## Usage
 
@@ -19,23 +23,74 @@ Write your nested HTML lists like so:
 
     <div class="dd">
         <ol class="dd-list">
-            <li class="dd-item" data-id="1">
-                <div class="dd-handle">Item 1</div>
+
+            <!--- Item1 --->
+            <li class="dd-item" data-id="1" data-name="Item 1" data-slug="item-slug-1" data-new="0" data-deleted="0">
+              <div class="dd-handle">Item 1</div>
+              <span class="button-delete btn btn-default btn-xs pull-right"
+                    data-owner-id="1">
+                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+              </span>
+              <span class="button-edit btn btn-default btn-xs pull-right"
+                    data-owner-id="1">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </span>
             </li>
-            <li class="dd-item" data-id="2">
-                <div class="dd-handle">Item 2</div>
+
+            <!--- Item2 --->
+            <li class="dd-item" data-id="2" data-name="Item 2" data-slug="item-slug-2" data-new="0" data-deleted="0">
+              <div class="dd-handle">Item 2</div>
+              <span class="button-delete btn btn-default btn-xs pull-right"
+                    data-owner-id="2">
+                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+              </span>
+              <span class="button-edit btn btn-default btn-xs pull-right"
+                    data-owner-id="2">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </span>
             </li>
-            <li class="dd-item" data-id="3">
-                <div class="dd-handle">Item 3</div>
-                <ol class="dd-list">
-                    <li class="dd-item" data-id="4">
-                        <div class="dd-handle">Item 4</div>
-                    </li>
-                    <li class="dd-item" data-id="5">
-                        <div class="dd-handle">Item 5</div>
-                    </li>
-                </ol>
+
+            <!--- Item3 --->
+            <li class="dd-item" data-id="3" data-name="Item 3" data-slug="item-slug-3" data-new="0" data-deleted="0">
+              <div class="dd-handle">Item 3</div>
+              <span class="button-delete btn btn-default btn-xs pull-right"
+                    data-owner-id="3">
+                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+              </span>
+              <span class="button-edit btn btn-default btn-xs pull-right"
+                    data-owner-id="3">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </span>
+              <!--- Item3 children --->
+              <ol class="dd-list">
+                <!--- Item4 --->
+                <li class="dd-item" data-id="4" data-name="Item 4" data-slug="item-slug-4" data-new="0" data-deleted="0">
+                  <div class="dd-handle">Item 4</div>
+                  <span class="button-delete btn btn-default btn-xs pull-right"
+                        data-owner-id="4">
+                    <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                  </span>
+                  <span class="button-edit btn btn-default btn-xs pull-right"
+                        data-owner-id="4">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
+                </li>
+
+                <!--- Item5 --->
+                <li class="dd-item" data-id="5" data-name="Item 5" data-slug="item-slug-5" data-new="0" data-deleted="0">
+                  <div class="dd-handle">Item 5</div>
+                  <span class="button-delete btn btn-default btn-xs pull-right"
+                        data-owner-id="5">
+                    <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                  </span>
+                  <span class="button-edit btn btn-default btn-xs pull-right"
+                        data-owner-id="5">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
+                </li>
+              </ol>
             </li>
+
         </ol>
     </div>
 
@@ -83,25 +138,4 @@ These advanced config options are also available:
 * `expandBtnHTML` The HTML text used to generate a list item expand button (default `'<button data-action="expand">Expand></button>'`)
 * `collapseBtnHTML` The HTML text used to generate a list item collapse button (default `'<button data-action="collapse">Collapse</button>'`)
 
-**Inspect the [Nestable Demo](http://dbushell.github.com/Nestable/) for guidance.**
-
-## Change Log
-
-### 15th October 2012
-
-* Merge for Zepto.js support
-* Merge fix for remove/detach items
-
-### 27th June 2012
-
-* Added `maxDepth` option (default to 5)
-* Added empty placeholder
-* Updated CSS class structure with options for `listClass` and `itemClass`.
-* Fixed to allow drag and drop between multiple Nestable instances (off by default).
-* Added `group` option to enabled the above.
-
-* * *
-
-Author: David Bushell [http://dbushell.com](http://dbushell.com/) [@dbushell](http://twitter.com/dbushell/)
-
-Copyright © 2012 David Bushell | BSD & MIT license
+Inspect the [Nestable Demo](http://dbushell.github.com/Nestable/) for guidance of the original Nestable component (created by David Bushell).
