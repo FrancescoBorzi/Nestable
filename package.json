@@ -1,0 +1,25 @@
+{
+  "name": "nestable-sortable-list",
+  "version": "1.0.0",
+  "description": "jQuery plugin to create sortable (drag and drop) list",
+  "main": "jquery.nestable.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bssanchez/Nestable.git"
+  },
+  "keywords": [
+    "sortable",
+    "jquery",
+    "nestable",
+    "nestable++"
+  ],
+  "author": "dbushell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bssanchez/Nestable/issues"
+  },
+  "homepage": "https://github.com/bssanchez/Nestable#readme"
+}
