@@ -15,7 +15,7 @@ var updateOutput = function (e) {
   }
 };
 
-var nestableList = $("#nestable > .dd-list");
+var nestableList = $(".dd.nestable > .dd-list");
 
 /***************************************/
 
@@ -27,7 +27,7 @@ var deleteFromMenuHelper = function (target) {
     // if it's not yet saved in the database, just remove it from DOM
     target.fadeOut(function () {
       target.remove();
-      updateOutput($('#nestable').data('output', $('#json-output')));
+      updateOutput($('.dd.nestable').data('output', $('#json-output')));
     });
   } else {
     // otherwise hide and mark it for deletion
@@ -55,7 +55,7 @@ var deleteFromMenu = function () {
   deleteFromMenuHelper(target);
 
   // update JSON
-  updateOutput($('#nestable').data('output', $('#json-output')));
+  updateOutput($('.dd.nestable').data('output', $('#json-output')));
 };
 
 /***************************************/
@@ -100,7 +100,7 @@ var editMenuItem = function () {
   menuEditor.fadeOut();
 
   // update JSON
-  updateOutput($('#nestable').data('output', $('#json-output')));
+  updateOutput($('.dd.nestable').data('output', $('#json-output')));
 };
 
 /***************************************/
@@ -137,11 +137,11 @@ var addToMenu = function () {
   newIdCount++;
 
   // update JSON
-  updateOutput($('#nestable').data('output', $('#json-output')));
+  updateOutput($('.dd.nestable').data('output', $('#json-output')));
 
   // set events
-  $("#nestable .button-delete").on("click", deleteFromMenu);
-  $("#nestable .button-edit").on("click", prepareEdit);
+  $(".dd.nestable .button-delete").on("click", deleteFromMenu);
+  $(".dd.nestable .button-edit").on("click", prepareEdit);
 };
 
 
@@ -153,14 +153,14 @@ var addToMenu = function () {
 $(function () {
 
   // output initial serialised data
-  updateOutput($('#nestable').data('output', $('#json-output')));
+  updateOutput($('.dd.nestable').data('output', $('#json-output')));
 
   // set onclick events
   editButton.on("click", editMenuItem);
 
-  $("#nestable .button-delete").on("click", deleteFromMenu);
+  $(".dd.nestable .button-delete").on("click", deleteFromMenu);
 
-  $("#nestable .button-edit").on("click", prepareEdit);
+  $(".dd.nestable .button-edit").on("click", prepareEdit);
 
   $("#menu-editor").submit(function (e) {
     e.preventDefault();
